@@ -42,7 +42,7 @@ const Todo = () => {
       }
     }
   }, []);
-
+  
   const handleAdd = () => {
     if (update === false && todo !== "") {
       arr = newArr;
@@ -112,7 +112,7 @@ const Todo = () => {
         </Typography>
         <Box mx={5} my={3}>
           <Card sx={{ display: "flex", padding: "24px" }}>
-            <Box width={"70%"} mr={2}>
+            <Box id="todo_textfield" mr={2}>
               <TextField
                 id="activities"
                 label="Todo"
@@ -134,6 +134,7 @@ const Todo = () => {
             </Button>
           </Card>
         </Box>
+        {(JSON.parse(localStorage.getItem("data")).length !== 0) ?
         <Box mx={5} my={3}>
           <Card>
             <Table>
@@ -180,7 +181,8 @@ const Todo = () => {
               </TableBody>
             </Table>
           </Card>
-        </Box>
+        </Box> : <Box mb={2} sx = {{opacity: 0.5, color: "red", fontWeight: 600}}>No Data Found!</Box>} 
+
       </Card>
       <Dialog
         open={open}
